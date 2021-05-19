@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  Email:string;
-  Password:string;
+  Email:string = "";
+  Password:string = "";
   constructor() { }
 
   ngOnInit(): void {
