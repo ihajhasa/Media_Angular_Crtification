@@ -45,13 +45,22 @@ router.delete('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  let headerInfo = req.headers.authorization;
+  const decoded = headerInfo ? verifyJwtToken(headerInfo): undefined;
+  if(decoded){
   const newsModel = new News(req.body)
   newsModel.save()
   .then(data => res.json(data))
   .catch(err => res.status(500).json(err))
+} else {
+  res.send(null);
+}
 })
 
 router.put('/:id', (req, res) => {
+  let headerInfo = req.headers.authorization;
+  const decoded = headerInfo ? verifyJwtToken(headerInfo): undefined;
+  if(decoded){
   const { id } = req.params
   const { title, description, url, imageUrl } = req.body;
   News.findById(id)
@@ -66,6 +75,9 @@ router.put('/:id', (req, res) => {
     })
     .then(updatednews => res.json(updatednews))
     .catch(err => res.status(500).json(err))
+  } else {
+    res.send(null);
+  }
 })
 
 function verifyJwtToken(headerInfo) {
