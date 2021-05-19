@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { from } from 'rxjs';
+import { NewsService } from '../../services/news.service';
+
 
 @Component({
   selector: 'app-add-news',
@@ -18,10 +20,15 @@ export class AddNewsComponent implements OnInit {
   });
 
   addValueToServer(){
-    console.log(this.addnewsForm.value)
+    console.log(this.addnewsForm.value);
+    this._newsService.postNews(this.addnewsForm.value).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
+
   }
 
-  constructor() { 
+  constructor(private _newsService:NewsService) { 
 
   }
 

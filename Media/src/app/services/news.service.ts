@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class NewsService {
 
-  adminNewsURL: string = 'http://localhost:3001/news/'
+  adminNewsURL: string = 'http://localhost:3000/news/'
 
   constructor(private httpClient: HttpClient) { }
 

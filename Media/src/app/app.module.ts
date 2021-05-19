@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsListComponent } from './components/news-list/news-list.component';
+import { NewsService } from './services/news.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { NewsListComponent } from './components/news-list/news-list.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [NewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
