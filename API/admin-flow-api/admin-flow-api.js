@@ -28,7 +28,7 @@ app.use(bodyParser.json())
 app.use('/news', newsRoutes)
 app.use('/', userRoutes)
 
-const PORT = 3000
+const PORT = 3001
 
 const server = http.createServer(app)
 
