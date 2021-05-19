@@ -11,6 +11,12 @@ import { NewsService } from 'src/app/services/news.service';
 export class EditNewsComponent implements OnInit {
 
   editNewsForm: FormGroup = this.formBuilder.group({
+    title: ['', [Validators.required]],
+        description: ['', [Validators.required]],
+        category: ['', [Validators.required]],
+        url: ['', [Validators.required]],
+        urlToImage: ['', [Validators.required]],
+        publishedDate: ['', Validators.required]
   })
   submitted: Boolean = false;
 
@@ -27,6 +33,10 @@ export class EditNewsComponent implements OnInit {
     if (!this.editNewsForm.valid) return;
 
     alert("Not Yet Implemented\n\n" + JSON.stringify(this.editNewsForm.value, null, 4))
+
+    this._news.updateNews(this.editNewsForm.value.id, this.editNewsForm.value)
+    .subscribe((response) => console.log(response),
+    (err) => console.log(err))
   }
   
   get controls() {return this.editNewsForm.controls}
@@ -53,12 +63,13 @@ export class EditNewsComponent implements OnInit {
       console.log(response)
 
       this.editNewsForm = this.formBuilder.group({
+        id: [id, [Validators.required]],
         title: [response.title, [Validators.required]],
         description: [response.description, [Validators.required]],
-        category: ['', [Validators.required]],
-        url: ['', [Validators.required]],
-        imgUrl: ['', [Validators.required]],
-        publishedDate: ['', Validators.required]
+        category: [response.category, [Validators.required]],
+        url: [response.url, [Validators.required]],
+        urlToImage: [response.urlToImage, [Validators.required]],
+        publishedDate: [response.publishedAt, Validators.required]
       })
     }, (err) => {
       console.log(err)

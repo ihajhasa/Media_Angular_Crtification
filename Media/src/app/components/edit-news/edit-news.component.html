@@ -60,13 +60,13 @@
             
             <div class="form-row form-group">
                 <input  type="text"
-                        name="imgUrl"
-                        formControlName="imgUrl"
+                        name="urlToImage"
+                        formControlName="urlToImage"
                         class="form-control"
                         placeholder="URL of Image"
-                        [ngClass] = "{'is-invalid': submitted && controls.imgUrl.errors}" />
-                <div *ngIf="submitted && controls.imgUrl.errors">
-                    <div *ngIf="controls.imgUrl.errors.required">URL of Image is required.</div>
+                        [ngClass] = "{'is-invalid': submitted && controls.urlToImage.errors}" />
+                <div *ngIf="submitted && controls.urlToImage.errors">
+                    <div *ngIf="controls.urlToImage.errors.required">URL of Image is required.</div>
                    <!--<div *ngIf="controls.url.errors.pattern">URL is not proper.</div>-->
                 </div>
             </div>

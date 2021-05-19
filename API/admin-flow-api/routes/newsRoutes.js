@@ -48,10 +48,6 @@ router.post('/', (req, res) => {
   let headerInfo = req.headers.authorization;
   const decoded = headerInfo ? verifyJwtToken(headerInfo): undefined;
 
-  console.log(headerInfo)
-  console.log(req.body)
-  console.log(decoded)
-
   if(decoded){
   const newsModel = new News(req.body)
   newsModel.save()
@@ -65,17 +61,19 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   let headerInfo = req.headers.authorization;
   const decoded = headerInfo ? verifyJwtToken(headerInfo): undefined;
+
   if(decoded){
   const { id } = req.params
   const { title, description, url, imageUrl } = req.body;
+
   News.findById(id)
     .then(news => {
       news.title = title;
       news.description = description;
       news.url = url;
       news.imageUrl = imageUrl;
-      news.publishedAt = publishedAt;
-      news.category = category;
+      news.publishedAt = news.publishedAt;
+      news.category = news.category;
       return news.save()
     })
     .then(updatednews => res.json(updatednews))
