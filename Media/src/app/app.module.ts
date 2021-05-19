@@ -11,6 +11,14 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AddNewsComponent } from './components/add-news/add-news.component';
 import { EditNewsComponent } from './components/edit-news/edit-news.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { NewsSliderComponent } from './components/news-slider/news-slider.component';
+import { WeatherComponent } from './components/weather/weather.component';
+import { SportComponent } from './components/sport/sport.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { NewsListComponent } from './components/news-list/news-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +28,15 @@ import { EditNewsComponent } from './components/edit-news/edit-news.component';
     ContactUsComponent,
     AboutUsComponent,
     AddNewsComponent,
-    EditNewsComponent
+    EditNewsComponent,
+    ChatComponent,
+    NewsSliderComponent,
+    WeatherComponent,
+    SportComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    NewsListComponent
   ],
   imports: [
     BrowserModule,
