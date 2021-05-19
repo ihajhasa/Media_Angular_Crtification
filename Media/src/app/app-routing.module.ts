@@ -37,7 +37,7 @@ const routes: Routes = [
     component: AddNewsComponent
   },
   {
-    path: 'edit-news',
+    path: 'edit-news/:id',
     component: EditNewsComponent
   }, 
   {

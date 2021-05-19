@@ -1,33 +1,101 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
 
-  adminNewsURL: string = 'http://localhost:3000/news/'
+  adminNewsURL: string = 'http://localhost:3001/news/'
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+    private _user: UserService) { }
 
   getAllNews() {
-    return this.httpClient.get<any>(this.adminNewsURL);
+
+    let user = this._user.getLocalUser();
+
+    if (!user) {
+      return this.httpClient.get<any>(this.adminNewsURL);
+    }
+
+    let httpOption = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'authorization': user.token
+      })
+    }
+
+    return this.httpClient.get<any>(this.adminNewsURL, httpOption);
   }
 
   getNews(id: string) {
-    return this.httpClient.get<any>(this.adminNewsURL + id);
+    let user = this._user.getLocalUser();
+
+    if (!user) {
+      return this.httpClient.get<any>(this.adminNewsURL);
+    }
+
+    let httpOption = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'authorization': user.token
+      })
+    }
+
+    return this.httpClient.get<any>(this.adminNewsURL + id, httpOption);
   }
 
   deleteNews(id: string) {
-    return this.httpClient.delete<any>(this.adminNewsURL + id);
+    let user = this._user.getLocalUser();
+
+    if (!user) {
+      return this.httpClient.get<any>(this.adminNewsURL);
+    }
+
+    let httpOption = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'authorization': user.token
+      })
+    }
+
+    return this.httpClient.delete<any>(this.adminNewsURL + id, httpOption);
   }
 
   postNews(news: any) {
-    return this.httpClient.post<any>(this.adminNewsURL, news);
+    let user = this._user.getLocalUser();
+
+    if (!user) {
+      return this.httpClient.get<any>(this.adminNewsURL);
+    }
+
+    let httpOption = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'authorization': user.token
+      })
+    }
+
+    return this.httpClient.post<any>(this.adminNewsURL, httpOption, news);
   }
 
   updateNews(id: string, news: any)
   {
-    return this.httpClient.put<any>(this.adminNewsURL + id, news);
+    let user = this._user.getLocalUser();
+
+    if (!user) {
+      return this.httpClient.get<any>(this.adminNewsURL);
+    }
+
+    let httpOption = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'authorization': user.token
+      })
+    }
+
+    return this.httpClient.put<any>(this.adminNewsURL + id, httpOption, news);
   }
 }
