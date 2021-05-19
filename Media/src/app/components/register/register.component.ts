@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,9 @@ export class RegisterComponent implements OnInit {
   regForm: FormGroup = this.formBuilder.group({});
   submitted: Boolean = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private router: Router,
+    private _user: UserService) { }
 
   onSubmit() {
     this.submitted = true;
@@ -22,7 +26,12 @@ export class RegisterComponent implements OnInit {
     // Here we will call the endpoint to register an admin account
     // This would probably require token authentication for admin
 
-    alert("Not Yet Implemented");
+    this._user.registerUser(fields).subscribe(
+      (response) => {
+        this._user.storeLocalUser(response);
+        this.router.navigate([""])
+      }, 
+      (err) => {alert(JSON.stringify(err, null, 4))})
   }
 
   get controls() {return this.regForm.controls}
