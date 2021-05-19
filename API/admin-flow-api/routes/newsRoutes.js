@@ -47,6 +47,11 @@ router.delete('/:id', (req, res) => {
 router.post('/', (req, res) => {
   let headerInfo = req.headers.authorization;
   const decoded = headerInfo ? verifyJwtToken(headerInfo): undefined;
+
+  console.log(headerInfo)
+  console.log(req.body)
+  console.log(decoded)
+
   if(decoded){
   const newsModel = new News(req.body)
   newsModel.save()

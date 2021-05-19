@@ -71,6 +71,7 @@ export class NewsService {
       return this.httpClient.get<any>(this.adminNewsURL);
     }
 
+
     let httpOption = {
       headers: new HttpHeaders({
         'content-type': 'application/json',
@@ -78,7 +79,10 @@ export class NewsService {
       })
     }
 
-    return this.httpClient.post<any>(this.adminNewsURL, httpOption, news);
+    console.log(httpOption.headers)
+    console.log(news)
+
+    return this.httpClient.post<any>(this.adminNewsURL, news, httpOption);
   }
 
   updateNews(id: string, news: any)
@@ -96,6 +100,6 @@ export class NewsService {
       })
     }
 
-    return this.httpClient.put<any>(this.adminNewsURL + id, httpOption, news);
+    return this.httpClient.put<any>(this.adminNewsURL + id, news, httpOption);
   }
 }

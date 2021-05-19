@@ -11,12 +11,12 @@ import { NewsService } from '../../services/news.service';
 })
 export class AddNewsComponent implements OnInit {
   addnewsForm = new FormGroup({
-    Title: new FormControl(''),
-    Description: new FormControl(""),
-    Url : new FormControl(''),
-    ImageUrl: new FormControl(''),
-    PublishedAt : new FormControl(''),
-    Category: new FormControl('')
+    title: new FormControl(''),
+    description: new FormControl(""),
+    url : new FormControl(''),
+    urlToImage: new FormControl(''),
+    publishedAt : new FormControl(''),
+    category: new FormControl('')
   });
 
   addValueToServer(){
