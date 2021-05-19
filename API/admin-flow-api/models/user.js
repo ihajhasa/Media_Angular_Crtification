@@ -18,7 +18,7 @@ UserSchema.methods.genPasswordHash = function (password) {
 UserSchema.methods.comparePasswordHash = function (password) {
   return bcrypt.compareSync(password, this.passwordHash)
 }
-
+// changes
 UserSchema.methods.genUserObj = function() {
   const payload = {
       name: this.name,
