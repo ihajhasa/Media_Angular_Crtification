@@ -18,8 +18,6 @@ export class UserService {
     return this.httpClient.post<any>(this.userURL + 'register/', form);
   }
 
-
-
   // local storage functions
   storeLocalUser(user: any) {
     localStorage.setItem('user', JSON.stringify(user))
