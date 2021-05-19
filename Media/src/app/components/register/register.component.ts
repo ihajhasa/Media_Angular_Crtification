@@ -17,6 +17,11 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     if (!this.regForm.valid) return;
 
+    const fields = this.regForm.value;
+
+    // Here we will call the endpoint to register an admin account
+    // This would probably require token authentication for admin
+
     alert("Not Yet Implemented");
   }
 
