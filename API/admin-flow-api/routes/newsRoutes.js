@@ -60,6 +60,8 @@ router.put('/:id', (req, res) => {
       news.description = description;
       news.url = url;
       news.imageUrl = imageUrl;
+      news.publishedAt = publishedAt;
+      news.category = category;
       return news.save()
     })
     .then(updatednews => res.json(updatednews))
