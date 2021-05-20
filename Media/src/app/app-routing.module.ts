@@ -71,6 +71,10 @@ const routes: Routes = [
   {
     path: 'weather',
     component: WeatherComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 
