@@ -21,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsService } from './services/news.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyChzHYUt99TH32WWkd4cn4LHkCcoV8HeA8'
+    }),
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]
