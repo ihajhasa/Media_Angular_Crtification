@@ -1,1 +1,20 @@
-<p>sport works!</p>
+<div *ngIf="newsList.length === 0; then emptyBlock else newsTable"></div>
+
+<ng-template #emptyBlock>
+    <h1> There are no news :( </h1>
+</ng-template>
+
+<ng-template #newsTable>
+    <table class="table">
+        <thead>
+            <th>Title</th>
+            <th>Category</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let news of newsList">
+                <th>{{news.title}}</th>
+                <th>{{news.category}}</th>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>

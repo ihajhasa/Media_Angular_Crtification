@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-sport',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SportComponent implements OnInit {
 
-  constructor() { }
+  newsList: any[] = []
+
+  constructor(private _news: NewsService) { }
 
   ngOnInit(): void {
+    this._news.getPublicAllNews()
+    .subscribe((response) => {
+      this.newsList = response
+    }, (err) => {
+      alert('Error getting news')
+      console.log(err)
+    })
   }
 
 }
