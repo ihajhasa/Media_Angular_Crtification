@@ -13,6 +13,6 @@ const NewsSchema = new mongoose.Schema({
   versionKey: false
 })
 
-const News = mongoose.model('News', NewsSchema)
+const News = mongoose.model('news', NewsSchema)
 
 module.exports = News

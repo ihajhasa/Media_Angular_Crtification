@@ -8,9 +8,14 @@ import { UserService } from './user.service';
 export class NewsService {
 
   adminNewsURL: string = 'http://localhost:3001/news/'
+  publicNewsURL: string = 'http://localhost:3000/newsArticles/'
 
   constructor(private httpClient: HttpClient,
     private _user: UserService) { }
+
+  getPublicAllNews() {
+    return this.httpClient.get<any>(this.publicNewsURL);
+  }
 
   getAllNews() {
 

@@ -32,11 +32,24 @@ export class EditNewsComponent implements OnInit {
 
     if (!this.editNewsForm.valid) return;
 
-    alert("Not Yet Implemented\n\n" + JSON.stringify(this.editNewsForm.value, null, 4))
-
     this._news.updateNews(this.editNewsForm.value.id, this.editNewsForm.value)
-    .subscribe((response) => console.log(response),
-    (err) => console.log(err))
+    .subscribe((response) => 
+    {
+      if (!response) {
+        alert('There was an error updating ... please try again later')
+        this.router.navigate(['admin'])
+      }
+      else {
+        alert('updated successfully')
+        this.router.navigate(['admin'])
+      }
+    },
+    
+    (err) => {
+        alert('There was an error updating ... please try again later')
+        console.log(err)
+        this.router.navigate(['admin'])
+    })
   }
   
   get controls() {return this.editNewsForm.controls}
