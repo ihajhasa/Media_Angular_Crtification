@@ -21,7 +21,6 @@ import { HomeComponent } from './components/home/home.component';
 import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsService } from './services/news.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModalModule } from 'ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -47,8 +46,7 @@ import { ModalModule } from 'ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule,
-    ModalModule,
+    NgbModule
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]
