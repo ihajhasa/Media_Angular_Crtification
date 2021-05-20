@@ -22,6 +22,7 @@ import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsService } from './services/news.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AgmCoreModule } from '@agm/core';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    NewsListComponent
+    NewsListComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
